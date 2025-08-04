@@ -1,0 +1,15 @@
+Sounds:
+headache - https://pixabay.com/sound-effects/buzzing-sound-light_bulb-271564/
+breathing - https://pixabay.com/sound-effects/sound-effect-breathing-hard-122341/
+thump - https://pixabay.com/sound-effects/thump-close-101799/
+growl - https://freesound.org/people/CropDub6425/sounds/703168/
+knocking - https://pixabay.com/sound-effects/wood-door-knock-106669/
+alleyway - https://freesound.org/people/Chupacabra/sounds/56920/
+showering - https://freesound.org/people/iut_Paris8/sounds/390652/
+inside - https://freesound.org/people/Joao_Janz/sounds/473698/
+birds - https://freesound.org/people/InspectorJ/sounds/339326/
+
+Fonts:
+Belanidi Serif - Yuri Hanshu
+La Oriental - Don Marciano/Juan Castillo
+Sylfaen - John Hudson/W. Ross Mills
