@@ -19,7 +19,6 @@ default wi = 0
 default time = "10:00 AM"
 define t = Character("[week[wi]] - [time]", who_color="#e27a19")
 define hm_color = "#a200ff70"
-# todo make ^ this variable in opacity if talked with them enough?
 define mc_color = "#208fda"
 define name = "{shader=jitter:u__jitter=(1.0, 1.0)}{s}[[Wrong]{/s}{/shader}"
 default cycles = 0
@@ -44,7 +43,6 @@ default not_alone = False
 # The game starts here.
 
 label start:
-
     play sound birds volume 0.05 fadein 2.0
 
     scene bedroom
@@ -119,7 +117,7 @@ label l1010am:
 
     $ time = "10:10 AM"
 
-    play sound headache loop volume 0.3 fadein 1.5
+    play sound headache loop volume 0.6 fadein 1.5
 
     t "The pounding in your ears just keeps getting louder, you {b}need{/b} to escape.\n\n{a=l1015am}Anywhere but here.{/a}" (advance=False)
 
@@ -127,6 +125,9 @@ label l1010am:
 label l1015am:
 
     $ time = "10:15 AM"
+
+    scene alley
+    with fade
 
     play extra_sound breathing volume 0.5 fadein 1.0 fadeout 1.0
 
@@ -176,7 +177,7 @@ label l1030am:
 
         t "You wish you could rip it all off. Expose the muscles and sinew that's surely rotting underneath. Maybe then you'd only look half as deformed as you do right now."
 
-        play sound headache loop volume 0.3 fadein 1.5
+        play sound headache loop volume 0.6 fadein 1.5
 
         t "Or maybe you'd look even worse. Maybe the core is what's wrong. The flesh and bone."
 
@@ -321,7 +322,7 @@ label l1057am:
     
     t "You already know that will be the response anyways.\n\nYou nod along anyways."
     
-    play sound headache loop volume 0.3 fadein 1.5
+    play sound headache loop volume 0.6 fadein 1.5
 
     t "{color=[hm_color]}\"Would you be up for going out with me later? Not like, anywhere specific, just a walk outside for a bit.\"{/color}"
     
@@ -483,7 +484,7 @@ label l1215pm:
 
         t "Tomorrow.\n\nMaybe."
 
-        play sound headache loop volume 0.3 fadein 1.5
+        play sound headache loop volume 0.6 fadein 1.5
 
         t "The pounding in your head grows."
 
@@ -793,6 +794,9 @@ label l402pm:
 
     $ time = "4:02 PM"
 
+    scene door
+    with fade
+
     t "You get your shoes on and they offer their hand."
 
     t "{color=[hm_color]}\"It's gonna be alright\"{/color} they soothingly say.\n\nYou don't know if it helps or makes you more scared of what's to come."
@@ -808,11 +812,14 @@ label l530pm:
 
     $ rng = renpy.random.randint(0, len(book) - 1)
 
-    t "You end up grabbing \"[book[rng]]\"."
+    if rng == 5:
+        t "{size=*0.9}You end up grabbing \"[book[rng]]\".{/size}"
+    else:
+        t "You end up grabbing \"[book[rng]]\"."
 
     $ time = "5:30 PM"
 
-    play sound headache loop volume 0.3 fadein 1.5
+    play sound headache loop volume 0.6 fadein 1.5
 
     t "Well, reading gave you a headache so you didn't really understand any of it. Or maybe your housemate just has a bad taste in literature."
 
@@ -941,7 +948,7 @@ label l9pm:
 
                 t "The container has a note on it."
 
-                t "I hope you feel better."
+                t "{color=[hm_color]}\"I hope you feel better.\"{/color}"
 
                 $ time = "9:20 PM"
 
@@ -1025,7 +1032,7 @@ label l946pm:
     else:
         t "You step inside to find a worried expression on your housemate's face."
 
-    play sound headache loop volume 0.3 fadein 1.5
+    play sound headache loop volume 0.6 fadein 1.5
 
     t "Your head starts pounding again."
 
@@ -1067,7 +1074,8 @@ label lend:
 
 label end:
 
-    scene black
+    window hide
+    show black onlayer frameOverlay
     with fade
 
     $ renpy.pause(delay=5, hard=True)
