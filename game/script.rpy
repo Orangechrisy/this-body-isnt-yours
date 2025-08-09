@@ -51,7 +51,7 @@ label start:
     show frame onlayer frameOverlay
 
     $ renpy.pause(delay=2.0, hard=True)
-
+    jump l1002am
     jump l10am
 
 label restart_day:
@@ -74,7 +74,7 @@ label restart_day:
 # the normal start
 label l10am:
 
-    play music inside loop
+    play music inside loop volume 0.6
 
     $ time = "10:00 AM"
 
@@ -285,6 +285,9 @@ label l1052am:
         jump l1057am  
 
     else:
+        if talks_with_hm < 5:
+            play extra_sound progress volume 0.1
+
         t "You cautiously step forward. It's not often you come out here. Not to talk, not to eat, not for anything."
 
         t "Your room is the only safe place."
@@ -313,6 +316,9 @@ label l1052am:
 
 # eating with housemate
 label l1057am:
+
+    if gone_outside >= 5 and not_alone:
+        play extra_sound progress volume 0.1
 
     $ time = "10:57 AM"
 
@@ -354,6 +360,9 @@ label l11am:
 
 # cant eat to housemate
 label l1107am:
+
+    if talks_with_hm < 5:
+        play extra_sound progress volume 0.1
 
     scene bedroom
     with fade
@@ -611,6 +620,9 @@ label l205pm:
 # passed out in shower
 label l210pm:
 
+    if not not_alone:
+        play extra_sound progress volume 0.1
+
     # fade to black and back
 
     stop music fadeout 2.0
@@ -623,7 +635,7 @@ label l210pm:
     scene bedroom
     with fadehold
 
-    play music inside loop
+    play music inside loop volume 0.6
 
     $ time = "2:10 PM"
 
@@ -639,6 +651,9 @@ label l210pm:
 
 # alley by choice
 label l215pm:
+
+    if gone_outside < 5:
+        play extra_sound progress volume 0.1
 
     stop music
 
@@ -757,7 +772,7 @@ label l4pm:
 
         t "Aren't they doing too much?"
         
-        if not_alone and (gone_outside > 5):
+        if not_alone and (gone_outside >= 5):
             t "{a=l401pm}It's all just too much for you.{/a}\n\n{a=l402pm}But maybe it will be okay.{/a}" (advance=False)
         else:
             t "{a=l401pm}It's all just too much for you.{/a}" (advance=False)
@@ -837,7 +852,7 @@ label l620pm:
     scene bedroom
     with fade
 
-    play music inside loop
+    play music inside loop volume 0.6
 
     $ time = "6:20 PM"
 
@@ -959,6 +974,9 @@ label l9pm:
 # talk to housemate
 label l901pm:
 
+    if talks_with_hm < 5:
+        play extra_sound progress volume 0.1
+
     $ time = "9:01 PM"
 
     t "{color=[hm_color]}\"Hey.\"{/color}"
@@ -1021,7 +1039,7 @@ label l946pm:
     scene apartment
     with fade
 
-    play music inside loop
+    play music inside loop volume 0.6
 
     $ time = "9:46 PM"
 
